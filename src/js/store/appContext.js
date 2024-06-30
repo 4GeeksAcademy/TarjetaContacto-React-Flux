@@ -22,15 +22,15 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
+		
+
 			/**
-			 * EDIT THIS!
-			 * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime
-			 * you should do your ajax requests or fetch api requests here. Do not use setState() to save data in the
-			 * store, instead use actions, like this:
-			 *
-			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
-			 *
-			 **/
+			* Accedemos a la función que tiene el servicio de mostrar la lista de contacto (creada en flux.js)			 
+			* Esta función se ejecuta cada vez que se inicia la página o se recarga. 
+			*/
+			
+			state.actions.obtenerListaContactos(state.store.miUsuario);
+
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
