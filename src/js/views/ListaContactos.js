@@ -20,16 +20,9 @@ export const ListaContactos = () => {
 
 
 	const eliminarContacto = (contacto) => {
-		const confirmar = window.confirm(`Seguro que deseas eliminar el contacto ${contacto.name} ??`);
-		if (confirmar) {
-			actions.eliminarContacto(store.miUsuario, contacto.id);
-			alert("Contacto eliminado")
-			window.location.reload()
-		}
+		actions.eliminarContacto(store.miUsuario, contacto.id);
+		window.location.reload()
 	}
-
-
-
 
 	if (contactos && contactos.length > 0) {
 		return (
@@ -42,9 +35,9 @@ export const ListaContactos = () => {
 							</div>
 							<div className="espacioDatos">
 								<h4>{item.name}</h4>
-								<p className="datoTelephone"><span className="glyphicon">&#xe182;</span> {item.phone}</p>
-								<p className="datoEmail"><i className="material-icons">&#xe0be;</i> {item.email}</p>
-								<p className="datoAddress"><i className="material-icons">&#xe0c8;</i> {item.address}</p>
+								<p className="datoTelephone"><i class="fa-solid fa-envelope"></i> {item.phone}</p>
+								<p className="datoEmail"><i class="fa-solid fa-phone"></i> {item.email}</p>
+								<p className="datoAddress"> <i class="fa-solid fa-location-dot"></i> {item.address}</p>
 							</div>
 
 							{/* BOTONES PARA EDITAR CONTACTO Y ELIMINAR CONTACTO */}
@@ -53,18 +46,34 @@ export const ListaContactos = () => {
 								{/* Con link to le indicamos que tiene que ir al componente de crearContacto/id del contacto que queramos
 								modificar */}
 								<Link
-								to={`/crearcontactos/${item.id}`}> 
-									<button >
-										<span className="glyphicon glyphicon-pencil"></span>
+									to={`/crearcontactos/${item.id}`}>
+									<button type="button" class="btn btn-light">
+										<i class="fa-solid fa-pencil fa-2x"></i>
 									</button>
 								</Link>
 
-
-
-
-								<button onClick={() => eliminarContacto(item)}>
-									<span className="bi bi-trash-fill icono-eliminar"></span>
+								<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+									<i class="fa-solid fa-trash-can fa-2x"></i>
 								</button>
+
+
+								<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h1 class="modal-title fs-5" id="exampleModalLabel">Atención!</h1>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												¿Deseas eliminar el contacto {item.name}?
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, cancelar</button>
+												<button onClick={() => eliminarContacto(item)} type="button" class="btn btn-primary">Si, eliminar</button>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</li>
 					))}

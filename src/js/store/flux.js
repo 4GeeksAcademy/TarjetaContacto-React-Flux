@@ -1,21 +1,11 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
+
+
+
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
 
 			miUsuario: "tom",
-
 
 			camposDelContacto: {
 				name: "",
@@ -27,12 +17,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			listaContactos: {},
 
 			contactoVacio: {},
-
-
-
-
-
 		},
+
+
+
+
 
 		actions: {
 
@@ -131,15 +120,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log('Error: ' + esError);
 				})
 			},
-
-
-
-
-
-
-
-
-
 
 
 			// Use getActions to call a function within a fuction

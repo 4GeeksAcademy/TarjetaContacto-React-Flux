@@ -86,8 +86,6 @@ export const CrearContacto = props => {
 
 
 
-
-
 	return (
 		<div className="container-fluid">
 			<form onSubmit={handleSubmit}>
@@ -139,9 +137,7 @@ export const CrearContacto = props => {
 				<div>
 					<button type="submit" className="btn btn-success guardarContacto">Guardar contacto</button>
 				</div>
-
-
-
+				
 				<Link to="/">
 					<span className="btn btn-primary btn-lg" href="#" role="button">
 						Volver a lista de contactos
