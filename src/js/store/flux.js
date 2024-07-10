@@ -1,8 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
-
-
-
 		store: {
 
 			miUsuario: "tom",
@@ -21,9 +18,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-
-
 		actions: {
+
+			crearUsuario: (slug) => {
+				return fetch(`https://playground.4geeks.com/contact/agendas/${slug}`, {
+					method: 'POST',
+				}).then(respuesta => {
+					if (!respuesta.ok) {
+						throw new Error('No fue ok ' + respuesta.statusText)
+					}
+					return respuesta.json()
+
+				}).then(datosRespuesta => {
+					console.log('respuesta del servicio: ', datosRespuesta);
+					setStore({ listaContactos: datosRespuesta });
+					return datosRespuesta;
+				})
+					.catch(esError => {  //catch captura el error del if si fueserroneo, no es obligatorio pero si buena práctica
+						console.log('Error: ' + esError);
+					})
+			},
+
+
+
+
 
 			/**
 			 * llamamos al servicio para obtener la agenda dentro de una función
@@ -105,7 +123,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			editarContacto: (slug, idContact, contacto) => {
 				return fetch(`https://playground.4geeks.com/contact/agendas/${slug}/contacts/${idContact}`, {
 					method: 'PUT',
-					headers: { 		
+					headers: {
 						'Content-Type': 'application/json'
 					},
 					body: JSON.stringify(contacto)
@@ -150,5 +168,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		}
 	};
 };
+
 
 export default getState;

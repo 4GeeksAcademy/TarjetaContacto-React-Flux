@@ -28,7 +28,7 @@ const injectContext = PassedComponent => {
 			* Accedemos a la función que tiene el servicio de mostrar la lista de contacto (creada en flux.js)			 
 			* Esta función se ejecuta cada vez que se inicia la página o se recarga. 
 			*/
-			
+			state.actions.crearUsuario(state.store.miUsuario);
 			state.actions.obtenerListaContactos(state.store.miUsuario);
 
 		}, []);
